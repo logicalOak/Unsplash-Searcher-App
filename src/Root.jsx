@@ -1,7 +1,13 @@
 import React from 'react';
 
 const Root = () => {
-	return <div></div>;
+	return (
+		<div>
+			{/* Header */}
+			{/* Preloader */}
+			{/* Items */}
+		</div>
+	);
 };
 
 export default Root;
