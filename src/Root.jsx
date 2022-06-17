@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Form from './components/Form';
+import Skeleton from './components/Skeleton';
+import Card from './components/Card';
+import Pagination from './components/Pagination';
 import { AppContext } from './context/AppContext';
 import headerBg from './assets/grid-image.jpg';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
@@ -54,8 +57,18 @@ const BackImage = styled.div`
 		}
 	}
 `;
-const Grid = styled.ul``;
-const GridPreLoader = styled(Grid)``;
+const Grid = styled.ul`
+	max-width: 1200px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 50px 10px;
+`;
+const GridPreloader = styled(Grid)`
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 20px;
+`;
 
 // 🍀 Root
 const Root = () => {
@@ -70,7 +83,36 @@ const Root = () => {
 				<Form />
 			</Header>
 			{/* Preloader */}
+			{isLoading && (
+				<GridPreloader>
+					{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((el) => (
+						<Skeleton key={el} />
+					))}
+				</GridPreloader>
+			)}
 			{/* Items */}
+			{photos.length !== 0 && (
+				<>
+					<Grid>
+						<ResponsiveMasonry
+							columnsCountBreakPoints={{
+								350: 1,
+								576: 2,
+								900: 3,
+								1200: 4,
+							}}
+						>
+							<Masonry gutter='20px'>
+								{photos.map((photo) => (
+									<Card key={photo.id} {...photo} />
+								))}
+							</Masonry>
+						</ResponsiveMasonry>
+					</Grid>
+					{/* Pagination */}
+					<Pagination />
+				</>
+			)}
 		</div>
 	);
 };
