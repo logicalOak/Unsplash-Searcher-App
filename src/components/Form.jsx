@@ -61,10 +61,7 @@ const Form = () => {
 			);
 			dispatch({
 				type: 'FETCH_PHOTOS',
-				payload: results,
-				total,
-				term,
-				total_pages,
+				payload: { results, total, term, total_pages },
 			});
 		}
 	};

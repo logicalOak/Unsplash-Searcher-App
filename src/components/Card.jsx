@@ -2,9 +2,52 @@ import React from 'react';
 import styled from 'styled-components';
 
 // 🍀 Styled Components
-const Wrapper = styled.li``;
-const CardHeader = styled.div``;
-const CardBody = styled.a``;
+const Wrapper = styled.li`
+	background-color: ${({ bg }) => (bg ? `${bg}cc` : 'fff')};
+	overflow: hidden;
+	box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+	border-radius: 2px;
+	line-height: 0;
+	display: flex;
+	flex-direction: column;
+	animation: animateCard 1s;
+
+	@keyframes animateCard {
+		from {
+			opacity: 0;
+			transform: translateY(100);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+`;
+const CardHeader = styled.div`
+	width: 100%;
+	overflow: hidden;
+
+	img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+`;
+const CardBody = styled.a`
+	padding: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+	line-heigth: 1.2;
+
+	img {
+		width: 32px;
+		height: 32px;
+		display: block;
+		border-radius: 50%;
+	}
+`;
 
 const Card = ({ color, alt_description, urls, user }) => {
 	return (

@@ -7,7 +7,7 @@ App for search pictures from [Unsplash](https://unsplash.com) use [API](https://
 #### 🧶 Screenshots:
 
 **Main Page:**
-![App Screenshot](screen.png)
+![App Screenshot](src/assets/preview.png)
 
 ---
 
